@@ -108,6 +108,7 @@
                 </executions>
             </plugin>
             <!-- static source code analysis -->
+            <!-- checkstyle checks style. not security related coding errors, etc
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -135,6 +136,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            -->
             <!-- static source code analysis -->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -241,6 +243,7 @@
                 <version>3.0.0</version>
             </plugin>
             <!-- Checkstyle report -->
+            <!-- Checkstyle checks 'style', not security, resource usage, performance
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -253,6 +256,7 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+            -->
             <!-- PMD report -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -279,6 +283,7 @@
                     </plugins>
                 </configuration>
             </plugin>
+            <!-- not security related
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -293,6 +298,7 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+            -->
         </plugins>
     </reporting>
 </project>
