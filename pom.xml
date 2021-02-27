@@ -229,6 +229,7 @@
                     <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
                 </configuration>
             </plugin>
         </plugins>
