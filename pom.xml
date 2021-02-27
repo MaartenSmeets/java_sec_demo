@@ -211,7 +211,7 @@
                 <version>2.8.0</version>
                 <configuration>
                     <to>
-                        <image>nexus:8082/myrepo/${project.artifactId}</image>
+                        <image>docker.io/maartensmeets/${project.artifactId}</image>
                         <tags>
                             <tag>${project.version}</tag>
                             <tag>latest</tag>
@@ -229,7 +229,6 @@
                     <from>
                         <image>openjdk:11-jdk-slim</image>
                     </from>
-                    <allowInsecureRegistries>true</allowInsecureRegistries>
                 </configuration>
             </plugin>
         </plugins>

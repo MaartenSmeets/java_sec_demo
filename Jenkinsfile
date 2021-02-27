@@ -51,7 +51,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
           withMaven(maven : 'mvn-3.6.3') {
-            sh "mvn jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0"
+            sh "mvn jib:build"
           }
         }
       } 
@@ -59,7 +59,7 @@ pipeline {
 
     stage('Anchore analyse') {
       steps {
-        writeFile file: 'anchore_images', text: 'nexus:8082/myrepo/spring-boot-demo'
+        writeFile file: 'anchore_images', text: 'docker.io/maartensmeets/spring-boot-demo'
         anchore name: 'anchore_images'
       }
     }
