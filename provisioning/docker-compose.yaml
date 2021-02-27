@@ -135,6 +135,7 @@ services:
 
   sonarqube:
     image: sonarqube:8.6-community
+    container_name: sonarqube
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
@@ -142,11 +143,16 @@ services:
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
     networks:
       - cicd
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
     ports:
       - '9000:9000'
+    expose:
+      - 9000
 
   nexus:
     image: sonatype/nexus3
+    container_name: nexus
     volumes:
       - "nexus_data:/nexus-data"
     networks:
@@ -155,6 +161,9 @@ services:
       - "8081:8081"
       - "8082:8082"
       - "8083:8083"
+    expose:
+      - 8082
+      - 8083
 
 networks:
   cicd:

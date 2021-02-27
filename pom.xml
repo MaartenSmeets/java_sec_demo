@@ -211,7 +211,7 @@
                 <version>2.8.0</version>
                 <configuration>
                     <to>
-                        <image>provisioning_nexus_1:8082/myrepo/${project.artifactId}</image>
+                        <image>nexus:8082/myrepo/${project.artifactId}</image>
                         <tags>
                             <tag>${project.version}</tag>
                             <tag>latest</tag>
