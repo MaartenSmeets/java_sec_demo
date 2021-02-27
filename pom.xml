@@ -211,7 +211,7 @@
                 <version>2.8.0</version>
                 <configuration>
                     <to>
-                        <image>docker.io/maartensmeets/${project.artifactId}</image>
+                        <image>provisioning_nexus_1:8082/myrepo/${project.artifactId}</image>
                         <tags>
                             <tag>${project.version}</tag>
                             <tag>latest</tag>

@@ -35,6 +35,18 @@ pipeline {
       }
     }
 
+    stage ('PMD SpotBugs') {
+      steps {
+        withMaven(maven : 'mvn-3.6.3') {
+          sh 'mvn pmd:pmd pmd:cpd spotbugs:spotbugs'
+        }
+
+        recordIssues enabledForFailure: true, tool: spotBugs()
+        recordIssues enabledForFailure: true, tool: cpd(pattern: '**/target/cpd.xml')
+        recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
+      }
+    }
+
     stage('Create and push container') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
@@ -50,16 +62,6 @@ pipeline {
         writeFile file: 'anchore_images', text: 'docker.io/maartensmeets/spring-boot-demo'
         anchore name: 'anchore_images'
       }
-    }
-
-    stage('Deploy to K8s') {
-      steps {
-        withKubeConfig([credentialsId: 'kubernetes-config']) {
-          sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
-          sh 'chmod u+x ./kubectl'
-          sh './kubectl apply -f k8s.yaml'
-        }
-      } 
     }
   }
 }
