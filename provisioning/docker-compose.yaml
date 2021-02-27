@@ -10,7 +10,6 @@ volumes:
   sonarqube_extensions:
   sonarqube_bundled-plugins:
   jenkins_data:
-  nexus_data: 
 
 services:
   # The primary API endpoint service
@@ -149,21 +148,6 @@ services:
       - '9000:9000'
     expose:
       - 9000
-
-  nexus:
-    image: sonatype/nexus3
-    container_name: nexus
-    volumes:
-      - "nexus_data:/nexus-data"
-    networks:
-      - cicd
-    ports:
-      - "8081:8081"
-      - "8082:8082"
-      - "8083:8083"
-    expose:
-      - 8082
-      - 8083
 
 networks:
   cicd:
