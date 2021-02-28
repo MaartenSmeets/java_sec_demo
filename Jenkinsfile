@@ -25,16 +25,6 @@ pipeline {
       }
     }
 
-    stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv(credentialsId: 'sonarqube-secret', installationName: 'sonarqube-server') {
-          withMaven(maven : 'mvn-3.6.3') {
-            sh 'mvn sonar:sonar -Dsonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json -Dsonar.dependencyCheck.xmlReportPath=target/dependency-check-report.xml -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html'
-          }
-        }
-      }
-    }
-
     stage ('PMD SpotBugs') {
       steps {
         withMaven(maven : 'mvn-3.6.3') {
@@ -50,7 +40,17 @@ pipeline {
     stage ('ZAP') {
       steps {
         withMaven(maven : 'mvn-3.6.3') {
-          sh 'mvn zap:analyse'
+          sh 'mvn zap:analyze'
+        }
+      }
+    }
+
+    stage('SonarQube analysis') {
+      steps {
+        withSonarQubeEnv(credentialsId: 'sonarqube-secret', installationName: 'sonarqube-server') {
+          withMaven(maven : 'mvn-3.6.3') {
+            sh 'mvn sonar:sonar -Dsonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json -Dsonar.dependencyCheck.xmlReportPath=target/dependency-check-report.xml -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html'
+          }
         }
       }
     }
