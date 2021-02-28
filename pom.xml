@@ -199,13 +199,6 @@
                     <zapPort>8080</zapPort>
                     <targetUrl>http://myapp:8080/rest/demo</targetUrl>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
