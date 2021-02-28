@@ -131,6 +131,16 @@ services:
     ports:
       - '8080:8080'
       - '50000:50000'
+  zap:
+    image: owasp/zap2docker-stable
+    container_name: zap
+    command: zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config api.disablekey=true
+    networks:
+      - cicd
+    expose:
+      - 8080
+    ports:
+      - '8085:8080'
 
   sonarqube:
     image: sonarqube:8.6-community
@@ -148,6 +158,14 @@ services:
       - '9000:9000'
     expose:
       - 9000
+
+  myapp:
+    image: docker.io/maartensmeets/spring-boot-demo
+    container_name: myapp
+    networks:
+      - cicd
+    expose:
+      - 8080
 
 networks:
   cicd:

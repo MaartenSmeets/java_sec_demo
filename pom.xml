@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -190,6 +190,24 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>br.com.softplan.security.zap</groupId>
+                <artifactId>zap-maven-plugin</artifactId>
+                <version>1.2.1-0</version>
+                <configuration>
+                    <!-- If ZAP is running on localhost, there is no need to define zapHost -->
+                    <zapHost>zap</zapHost>
+                    <zapPort>8080</zapPort>
+                    <targetUrl>http://myapp:8080/rest/demo</targetUrl>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.9.1</version>
@@ -202,7 +220,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.8.0.2131</version> 
+                <version>3.8.0.2131</version>
             </plugin>
             <!-- make container image -->
             <plugin>
