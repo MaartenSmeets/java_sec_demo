@@ -90,6 +90,9 @@
                     <centralAnalyzerEnabled>false</centralAnalyzerEnabled>
                     <!-- Am I the latest version? -->
                     <versionCheckEnabled>true</versionCheckEnabled>
+                    <suppressionFiles>
+                        <suppressionFile>src/main/resources/dependency-check-suppressions.xml</suppressionFile>
+                    </suppressionFiles>
                 </configuration>
             </plugin>
             <!-- test coverage -->
