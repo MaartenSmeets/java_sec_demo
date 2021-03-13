@@ -1,5 +1,6 @@
 package nl.amis.smeetsm.demoservice.controller;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,9 @@ public class DemoRestController {
     /**
      * @return Hi there.
      */
+
     @GetMapping("/rest/demo")
     public String demoReply() {
-        return (new StringBuilder().append("Hi there")).toString();
+        return "Hi there";
     }
 }

@@ -1,2 +1,7 @@
 <FindBugsFilter>
+    <Match>
+        <Class name="nl.amis.smeetsm.demoservice.controller.DemoRestController" />
+        <Method name="demoReply" />
+        <Bug pattern="SPRING_ENDPOINT" />
+    </Match>
 </FindBugsFilter>
