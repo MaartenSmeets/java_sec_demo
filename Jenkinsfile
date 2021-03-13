@@ -96,11 +96,11 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
+    }
 
-        post {
-            always {
-                cleanWs()
-            }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
