@@ -65,6 +65,7 @@ pipeline {
 
     stage("Quality gate") {
       steps {
+        sh 'sleep 10'
         waitForQualityGate abortPipeline: true
       }
     }
