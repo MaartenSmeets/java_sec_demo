@@ -166,6 +166,8 @@ services:
       - cicd
     expose:
       - 8080
+    ports:
+      - "8086:8080"
 
 networks:
   cicd:
