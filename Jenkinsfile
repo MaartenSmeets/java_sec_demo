@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    options {
-        // This is required if you want to clean before build
-        skipDefaultCheckout(true)
-    }
+
     tools {
         jdk 'jdk-11'
         maven 'mvn-3.6.3'
@@ -97,6 +94,12 @@ pipeline {
             steps {
                 sh 'sleep 10'
                 waitForQualityGate abortPipeline: true
+            }
+        }
+
+        post {
+            always {
+                cleanWs()
             }
         }
     }
