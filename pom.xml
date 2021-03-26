@@ -119,6 +119,9 @@
                     <failOnError>false</failOnError>
                     <includeFilterFile>src/main/resources/spotbugs-security-include.xml</includeFilterFile>
                     <excludeFilterFile>src/main/resources/spotbugs-security-exclude.xml</excludeFilterFile>
+                    <xmlOutput>true</xmlOutput>
+                    <!-- Optional directory to put spotbugs xdoc xml report -->
+                    <xmlOutputDirectory>target/site</xmlOutputDirectory>                         
                     <plugins>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
@@ -241,6 +244,9 @@
                     <failOnError>false</failOnError>
                     <includeFilterFile>src/main/resources/spotbugs-security-include.xml</includeFilterFile>
                     <excludeFilterFile>src/main/resources/spotbugs-security-exclude.xml</excludeFilterFile>
+                    <xmlOutput>true</xmlOutput>
+                    <!-- Optional directory to put spotbugs xdoc xml report -->
+                    <xmlOutputDirectory>target/site</xmlOutputDirectory>
                     <plugins>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
