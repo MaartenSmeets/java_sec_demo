@@ -43,10 +43,9 @@ jobs:
         run: mvn --batch-mode --update-snapshots compile jib:build
       
       - name: Anchore scan
-        uses: anchore/scan-action@v2
+        uses: anchore/scan-action@v1
         with:
-          image: "docker.io/maartensmeets/spring-boot-demo"
-          severity-cutoff: high
+          image-reference: "docker.io/maartensmeets/spring-boot-demo"
           fail-build: true
           
       - name: Start service
