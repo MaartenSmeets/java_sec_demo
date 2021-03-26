@@ -45,7 +45,7 @@ jobs:
       - name: Anchore scan
         uses: anchore/scan-action@v2
         with:
-          image-reference: "docker.io/maartensmeets/spring-boot-demo"
+          image: "docker.io/maartensmeets/spring-boot-demo"
           fail-build: true
           
       - name: Start service
