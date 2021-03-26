@@ -14,6 +14,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Set environment variables
+        run: |
+          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> $GITHUB_ENV
+          echo "DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}" >> $GITHUB_ENV
+      
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -23,14 +28,20 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2          
+      
       - name: Static checks
         run: mvn --batch-mode --update-snapshots dependency-check:check pmd:pmd pmd:cpd spotbugs:spotbugs
+      
+      - name: Publish image to DockerHub
+        run: mvn --batch-mode --update-snapshots jib:build
+      
       - name: 'Publish Test Report'
         if: always()
         uses: actions/upload-artifact@v2
