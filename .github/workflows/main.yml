@@ -40,7 +40,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots dependency-check:check pmd:pmd pmd:cpd spotbugs:spotbugs
       
       - name: Publish image to DockerHub
-        run: mvn --batch-mode --update-snapshots jib:build
+        run: mvn --batch-mode --update-snapshots compile jib:build
       
       - name: 'Publish Test Report'
         if: always()
