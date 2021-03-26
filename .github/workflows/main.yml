@@ -46,6 +46,7 @@ jobs:
         uses: anchore/scan-action@v2
         with:
           image: "docker.io/maartensmeets/spring-boot-demo"
+          severity-cutoff: high
           fail-build: true
           
       - name: Start service
