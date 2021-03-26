@@ -31,3 +31,9 @@ jobs:
           restore-keys: ${{ runner.os }}-m2          
       - name: Static checks
         run: mvn --batch-mode --update-snapshots dependency-check:check pmd:pmd pmd:cpd spotbugs:spotbugs
+      - name: 'Publish Test Report'
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'test-report'
+          path: target/**/*.html
