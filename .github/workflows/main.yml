@@ -47,6 +47,15 @@ jobs:
         with:
           image-reference: "docker.io/maartensmeets/spring-boot-demo"
           fail-build: true
+          
+      - name: Start service
+        run: |
+          docker network create zap &
+          docker run --name spring-boot-demo --network zap -d -p 8080:8080 docker.io/maartensmeets/spring-boot-demo &
+
+      - name: OWASP ZAP scan
+        run: |
+          docker run --network zap -i owasp/zap2docker-stable zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' http://spring-boot-demo:8080
       
       - name: 'Publish Test Report'
         if: always()
