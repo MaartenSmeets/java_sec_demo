@@ -42,11 +42,18 @@ jobs:
       - name: Publish image to DockerHub
         run: mvn --batch-mode --update-snapshots compile jib:build
       
+      - name: Anchore scan
+        uses: anchore/scan-action@v1
+        with:
+          image-reference: "docker.io/maartensmeets/spring-boot-demo"
+          fail-build: true
+      
       - name: 'Publish Test Report'
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: 'test-report'
+          name: 'test-reports'
           path: |
              target/*.html
-             target/site/*.*
+             target/site/
+             ./anchore-reports/
