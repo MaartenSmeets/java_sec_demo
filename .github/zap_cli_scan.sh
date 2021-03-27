@@ -14,7 +14,9 @@ CONTAINER_ID=`$DOCKER run -d \
   -i $IMAGE zap.sh \
   -daemon -port $ZAP_API_PORT \
   -host 0.0.0.0 \
-  -config api.disablekey=true`
+  -config api.disablekey=true \
+  -config api.addrs.addr.name=.* \
+  -config api.addrs.addr.regex=true`
 
 echo "\nWaiting for ZAP to start"
 # Poll the api and wait for it to start up
