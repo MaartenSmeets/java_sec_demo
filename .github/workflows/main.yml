@@ -55,7 +55,11 @@ jobs:
 
       - name: OWASP ZAP scan
         run: |
-          docker run --network zap -i owasp/zap2docker-stable zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' http://spring-boot-demo:8080
+            # make file runnable, might not be necessary
+            chmod +x "${GITHUB_WORKSPACE}/.github/zap_cli_scan.sh"
+            # run script
+            "${GITHUB_WORKSPACE}/.github/zap_cli_scan.sh"
+            mv owaspreport.html target
       
       - name: 'Publish Test Report'
         if: always()
