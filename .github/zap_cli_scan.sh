@@ -16,16 +16,10 @@ CONTAINER_ID=`$DOCKER run -d \
   -host 0.0.0.0 \
   -config api.disablekey=true`
 
-# set up our status spinner
-spin='-\|/'
-i=0;
-
 # Poll the api and wait for it to start up
 while ! curl -s http://0.0.0.0:$ZAP_API_PORT > /dev/null
 do
- i=$(( (i+1) %4 ))
- printf "\rWaiting for OWASP ZAP to start ${spin:$i:1}"
- sleep .1
+ sleep .5
 done
 echo "\nZAP has successfully started"
 
