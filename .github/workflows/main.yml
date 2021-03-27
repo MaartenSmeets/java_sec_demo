@@ -22,6 +22,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout sources
         uses: actions/checkout@v2
+      
+      - name: Cache Docker images
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
 
       # Runs a single command using the runners shell
       - name: Setup Java 11
