@@ -55,8 +55,8 @@ jobs:
           
       - name: Start service
         run: |
-          docker network create zap &
-          docker run --name spring-boot-demo --network zap -d -p 8080:8080 docker.io/maartensmeets/spring-boot-demo &
+          docker network create zap
+          docker run --name spring-boot-demo --network zap -d -p 8080:8080 docker.io/maartensmeets/spring-boot-demo
 
       - name: OWASP ZAP scan
         run: |
