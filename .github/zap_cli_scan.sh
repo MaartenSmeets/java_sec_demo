@@ -8,7 +8,7 @@ ZAP_API_PORT='8090'
 
 # Start our container
 CONTAINER_ID=`$DOCKER run -d \
-  --network zap
+  --network zap \
   -p $ZAP_API_PORT:$ZAP_API_PORT \
   -v $PWD:/zap/reports:rw \
   -i $IMAGE zap.sh \
