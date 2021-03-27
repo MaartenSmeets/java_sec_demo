@@ -212,7 +212,7 @@
                         </ports>
                     </container>
                     <from>
-                        <image>openjdk:11-jdk-slim</image>
+                        <image>openjdk:16-alpine@sha256:f9be8e89a2bbf973dcd6c286f85bb0f68a8f9d5fa7c6241eb59f07add4a24789</image>
                     </from>
                 </configuration>
             </plugin>
