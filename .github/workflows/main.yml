@@ -29,10 +29,12 @@ jobs:
         with:
           java-version: 11
           
-      - name: Cache Maven packages
+      - name: Cache Maven packages and Google Jib cache
         uses: actions/cache@v2
         with:
-          path: ~/.m2
+          path: | 
+            ~/.m2
+            ~/.cache/google-cloud-tools-java/jib
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2          
       
