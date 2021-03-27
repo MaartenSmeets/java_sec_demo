@@ -16,6 +16,7 @@ CONTAINER_ID=`$DOCKER run -d \
   -host 0.0.0.0 \
   -config api.disablekey=true`
 
+echo "\nWaiting for ZAP to start"
 # Poll the api and wait for it to start up
 while ! curl -s http://0.0.0.0:$ZAP_API_PORT > /dev/null
 do
@@ -31,6 +32,7 @@ $DOCKER exec $CONTAINER_ID \
 $DOCKER exec $CONTAINER_ID \
   zap-cli -v -p $ZAP_API_PORT spider $URL
 
+echo "\nPerforming ZAP scan"
 # Scan the site
 $DOCKER exec $CONTAINER_ID \
   zap-cli -v -p $ZAP_API_PORT active-scan \
@@ -41,9 +43,12 @@ $DOCKER exec $CONTAINER_ID \
   zap-cli -p $ZAP_API_PORT alerts -l Low
 
 # Generate our report
+echo "\nGenerating ZAP report"
 $DOCKER exec $CONTAINER_ID \
   zap-cli -p $ZAP_API_PORT report \
   -o /zap/reports/owaspreport.html -f html
 
+echo "\nCleaning up ZAP"
 # Shut down the docker image
 $DOCKER kill $CONTAINER_ID
+echo "\nDone ZAP"
