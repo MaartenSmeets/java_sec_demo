@@ -49,7 +49,7 @@ $DOCKER exec $CONTAINER_ID \
 # Generate our report
 $DOCKER exec $CONTAINER_ID \
   zap-cli -p $ZAP_API_PORT report \
-  -o /zap/reports/report.html -f html
+  -o /zap/reports/owaspreport.html -f html
 
 # Shut down the docker image
 $DOCKER kill $CONTAINER_ID
