@@ -1,6 +1,9 @@
 #!/bin/sh
 #copied and altered from https://gist.github.com/ian-bartholomew/0b85c8764a6a1098bf121c1162236fe3
 
+echo Present working directory: $PWD
+echo Permissions: `ls -altr $PWD`
+
 DOCKER=`which docker`
 IMAGE='owasp/zap2docker-weekly'
 URL='http://spring-boot-demo:8080/rest/demo'
