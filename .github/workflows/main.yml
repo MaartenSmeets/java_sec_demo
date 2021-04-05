@@ -74,7 +74,13 @@ jobs:
             # run script
             "${GITHUB_WORKSPACE}/.github/zap_cli_scan.sh"
             mv owaspreport.html target
-      
+
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+
       - name: 'Publish Test Report'
         if: always()
         uses: actions/upload-artifact@v2
