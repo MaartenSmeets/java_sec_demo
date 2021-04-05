@@ -51,7 +51,7 @@ $DOCKER exec $CONTAINER_ID \
 echo "\nGenerating ZAP report"
 $DOCKER exec $CONTAINER_ID \
   zap-cli -p $ZAP_API_PORT report \
-  -o /zap/reports/owaspreport.html -f html
+  -o /zap/reports/owaspreport.xml -f xml
 
 echo "\nCleaning up ZAP"
 # Shut down the docker image
