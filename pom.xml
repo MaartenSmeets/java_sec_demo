@@ -17,7 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <sonar.projectKey>MaartenSmeets_java_sec_demo</sonar.projectKey>
-        <sonar.organization>javasecdemo</sonar.organization>
+        <sonar.organization>maartensmeets</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>             
 
