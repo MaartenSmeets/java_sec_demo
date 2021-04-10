@@ -91,6 +91,41 @@
                     <versionCheckEnabled>true</versionCheckEnabled>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <dir>target</dir>
+                            <includes>
+                                <include>dependency-check-report.xml</include>
+                            </includes>
+                            <stylesheet>src/main/resources/dependencycheck_to_pmd.xsl</stylesheet>
+                            <outputDir>target</outputDir>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.MergeFileMapper">
+                                    <targetName>dependency-check-report-pmd.xml</targetName>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>saxon</artifactId>
+                        <version>8.7</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <!-- test coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
