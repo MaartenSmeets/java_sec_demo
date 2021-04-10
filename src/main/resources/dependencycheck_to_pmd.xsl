@@ -8,7 +8,7 @@
             <xsl:for-each select="b:analysis/b:dependencies/b:dependency[count(b:vulnerabilities/b:vulnerability)>0]">
                 <a:file name="pom.xml">
                     <xsl:for-each select="b:vulnerabilities/b:vulnerability">
-                        <violation begincolumn="0" beginline="0" endcolumn="0" endline="0">
+                        <violation begincolumn="1" beginline="1" endcolumn="1" endline="1">
                             <xsl:attribute name="externalInfoUrl">
                                 <xsl:value-of select="concat('https://nvd.nist.gov/vuln/detail/',b:name)"/>
                             </xsl:attribute>
