@@ -6,10 +6,7 @@
                 <xsl:value-of select="current-dateTime()"/>
             </xsl:attribute>
             <xsl:for-each select="b:analysis/b:dependencies/b:dependency[count(b:vulnerabilities/b:vulnerability)>0]">
-                <a:file>
-                    <xsl:attribute name="name">
-                        <xsl:value-of select="b:fileName"/>
-                    </xsl:attribute>
+                <a:file name="pom.xml">
                     <xsl:for-each select="b:vulnerabilities/b:vulnerability">
                         <violation begincolumn="0" beginline="0" endcolumn="0" endline="0">
                             <xsl:attribute name="externalInfoUrl">
@@ -24,7 +21,7 @@
                             <xsl:attribute name="ruleset">
                                 <xsl:value-of select="@source"/>
                             </xsl:attribute>
-                            <xsl:value-of select="b:description"/>
+                            <xsl:value-of select='concat("b:fileName"," : ",b:description)'/>
                         </violation>
                     </xsl:for-each>
                 </a:file>
