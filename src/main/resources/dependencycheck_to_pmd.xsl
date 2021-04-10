@@ -21,7 +21,7 @@
                             <xsl:attribute name="ruleset">
                                 <xsl:value-of select="@source"/>
                             </xsl:attribute>
-                            <xsl:value-of select='concat(b:fileName," : ",b:description)'/>
+                            <xsl:value-of select='concat(../../b:fileName," : ",b:description)'/>
                         </violation>
                     </xsl:for-each>
                 </a:file>
