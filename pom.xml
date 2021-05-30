@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
@@ -216,7 +216,7 @@
                         </ports>
                     </container>
                     <from>
-                        <image>openjdk:16-alpine@sha256:f9be8e89a2bbf973dcd6c286f85bb0f68a8f9d5fa7c6241eb59f07add4a24789</image>
+                        <image>openjdk:17-jdk-alpine@sha256:57c2bd64588e39a7d00581b094136e4b13d2056b5a4f5a0fc39f23f17f1b6965</image>
                     </from>
                 </configuration>
             </plugin>
