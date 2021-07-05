@@ -22,6 +22,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout sources
         uses: actions/checkout@v2
+        with:
+           fetch-depth: 0
       
       # Runs a single command using the runners shell
       - name: Setup Java 11
