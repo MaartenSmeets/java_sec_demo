@@ -107,7 +107,7 @@ services:
       - /analysis_scratch
     command: ["anchore-manager", "service", "start", "analyzer"]
   db:
-    image: "postgres:9"
+    image: "postgres:14"
     volumes:
       - anchore-db-volume:/var/lib/postgresql/data
     networks:
