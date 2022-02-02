@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent { label "linux" }
+    options {
+        lock resource: 'zap'
+    }
 
     tools {
         jdk 'jdk-11'
