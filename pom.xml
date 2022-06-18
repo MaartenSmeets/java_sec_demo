@@ -38,7 +38,7 @@
         <dependency>
             <groupId>net.sourceforge.pmd</groupId>
             <artifactId>pmd-java</artifactId>
-            <version>6.31.0</version>
+            <version>6.46.0</version>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
