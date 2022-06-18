@@ -143,7 +143,7 @@ services:
       - '8085:8080'
 
   sonarqube:
-    image: sonarqube:8.6-community
+    image: sonarqube:9.5-community
     container_name: sonarqube
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
